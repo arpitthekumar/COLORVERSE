@@ -1,0 +1,28 @@
+[
+  { "name": "Red", "hue": 0, "temperature": "warm", "category": ["red"] },
+  { "name": "Orange", "hue": 25, "temperature": "warm", "category": ["orange"] },
+  { "name": "Amber", "hue": 40, "temperature": "warm", "category": ["yellow"] },
+  { "name": "Yellow", "hue": 55, "temperature": "warm", "category": ["yellow"] },
+  { "name": "Lime", "hue": 85, "temperature": "warm", "category": ["green"] },
+  { "name": "Green", "hue": 120, "temperature": "cool", "category": ["green", "nature"] },
+  { "name": "Emerald", "hue": 150, "temperature": "cool", "category": ["green", "nature"] },
+  { "name": "Teal", "hue": 170, "temperature": "cool", "category": ["blue-green"] },
+  { "name": "Cyan", "hue": 190, "temperature": "cool", "category": ["blue"] },
+  { "name": "Sky", "hue": 205, "temperature": "cool", "category": ["blue"] },
+  { "name": "Blue", "hue": 220, "temperature": "cool", "category": ["blue"] },
+  { "name": "Indigo", "hue": 245, "temperature": "cool", "category": ["purple"] },
+  { "name": "Violet", "hue": 270, "temperature": "cool", "category": ["purple"] },
+  { "name": "Purple", "hue": 290, "temperature": "cool", "category": ["purple"] },
+  { "name": "Magenta", "hue": 310, "temperature": "warm", "category": ["pink"] },
+  { "name": "Pink", "hue": 330, "temperature": "warm", "category": ["pink", "pastel"] },
+  { "name": "Rose", "hue": 345, "temperature": "warm", "category": ["pink"] },
+  { "name": "Brown", "hue": 25, "temperature": "warm", "category": ["brown", "earth"] },
+  { "name": "Sand", "hue": 38, "temperature": "warm", "category": ["neutral", "earth"] },
+  { "name": "Olive", "hue": 75, "temperature": "warm", "category": ["green", "earth"] },
+  { "name": "Slate", "hue": 220, "temperature": "neutral", "category": ["neutral"] },
+  { "name": "Gray", "hue": 220, "temperature": "neutral", "category": ["neutral"] },
+  { "name": "Charcoal", "hue": 220, "temperature": "neutral", "category": ["neutral"] },
+  { "name": "Navy", "hue": 225, "temperature": "cool", "category": ["blue"] }
+]
+
+

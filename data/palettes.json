@@ -1,0 +1,89 @@
+[
+  {
+    "id": "calm-coastal",
+    "name": "Calm Coastal",
+    "type": ["pastel", "nature", "calm"],
+    "colors": [
+      { "hex": "#A8DADC", "role": "background" },
+      { "hex": "#F1FAEE", "role": "surface" },
+      { "hex": "#457B9D", "role": "primary" },
+      { "hex": "#1D3557", "role": "accent" }
+    ],
+    "useCase": "Relaxing UI themes for wellness apps, blogs and coastal brands.",
+    "recommendedFor": ["wellness", "travel", "blogs"],
+    "notes": "Works well with soft typography and generous white space."
+  },
+  {
+    "id": "gotham",
+    "name": "Gotham",
+    "type": ["dark", "minimal", "tech"],
+    "colors": [
+      { "hex": "#0B0C10", "role": "background" },
+      { "hex": "#1F2833", "role": "surface" },
+      { "hex": "#C5C6C7", "role": "text" },
+      { "hex": "#66FCF1", "role": "accent" },
+      { "hex": "#45A29E", "role": "secondary" }
+    ],
+    "useCase": "Dark futuristic dashboards and landing pages.",
+    "recommendedFor": ["SaaS", "cyberpunk", "dashboards"],
+    "notes": "Use bright accents sparingly to avoid visual noise."
+  },
+  {
+    "id": "ice-cream",
+    "name": "Ice Cream",
+    "type": ["pastel", "fun"],
+    "colors": [
+      { "hex": "#FECACA", "role": "strawberry" },
+      { "hex": "#FEF9C3", "role": "vanilla" },
+      { "hex": "#BBF7D0", "role": "mint" },
+      { "hex": "#BAE6FD", "role": "blueberry" }
+    ],
+    "useCase": "Playful branding, children-focused apps and friendly UIs.",
+    "recommendedFor": ["kids brands", "social", "food"],
+    "notes": "Keep typography simple and dark for readability."
+  },
+  {
+    "id": "luxury-gold",
+    "name": "Luxury Glow",
+    "type": ["luxury", "dark"],
+    "colors": [
+      { "hex": "#020617", "role": "background" },
+      { "hex": "#111827", "role": "surface" },
+      { "hex": "#FACC15", "role": "primary" },
+      { "hex": "#FBBF24", "role": "accent" }
+    ],
+    "useCase": "High-end product pages, jewelry, premium service websites.",
+    "recommendedFor": ["luxury", "ecommerce"],
+    "notes": "Use plenty of spacing to let the gold accents breathe."
+  },
+  {
+    "id": "neon-night",
+    "name": "Neon Night",
+    "type": ["neon", "fun", "dark"],
+    "colors": [
+      { "hex": "#020617", "role": "background" },
+      { "hex": "#22C55E", "role": "accent-1" },
+      { "hex": "#3B82F6", "role": "accent-2" },
+      { "hex": "#EC4899", "role": "accent-3" }
+    ],
+    "useCase": "Music, gaming, nightlife and cyberpunk visuals.",
+    "recommendedFor": ["gaming", "events"],
+    "notes": "Pair with subtle gradients and avoid too much text on bright areas."
+  },
+  {
+    "id": "minimal-sand",
+    "name": "Minimal Sand",
+    "type": ["minimal", "nature"],
+    "colors": [
+      { "hex": "#F3F4F6", "role": "background" },
+      { "hex": "#E5E7EB", "role": "surface" },
+      { "hex": "#9CA3AF", "role": "text" },
+      { "hex": "#FBBF77", "role": "accent" }
+    ],
+    "useCase": "Clean portfolios, case studies and blog layouts.",
+    "recommendedFor": ["portfolio", "editorial"],
+    "notes": "Introduce bold imagery to avoid the interface feeling too plain."
+  }
+]
+
+

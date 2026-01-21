@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palettes – ColorVerse</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/palettes.css" />
+  </head>
+  <body data-page="palettes">
+    <header class="site-header">
+      <div class="navbar container">
+        <div class="nav-logo">
+          <a href="index.html">ColorVerse</a>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-nav="home">Home</a>
+          <a href="colors.html" data-nav="colors">Colors</a>
+          <a href="palettes.html" data-nav="palettes">Palettes</a>
+          <a href="theory.html" data-nav="theory">Theory</a>
+          <a href="canvas.html" data-nav="canvas">Canvas</a>
+          <a href="about.html" data-nav="about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main palettes-main">
+      <section class="section palettes-hero">
+        <div class="container">
+          <h1 class="page-title">Palette Collections</h1>
+          <p class="section-description">
+            Explore ready-made color palettes for branding, UI and content.
+            Click a palette to preview it in a simple UI mock and copy its HEX
+            codes.
+          </p>
+        </div>
+      </section>
+
+      <section class="section palettes-layout">
+        <div class="container palettes-grid-layout">
+          <aside class="palettes-sidebar">
+            <h2>Palette Types</h2>
+            <div class="chip-row" id="palette-filters">
+              <button class="chip" data-type="all">All</button>
+              <button class="chip" data-type="pastel">Pastel</button>
+              <button class="chip" data-type="luxury">Luxury</button>
+              <button class="chip" data-type="nature">Nature</button>
+              <button class="chip" data-type="minimal">Minimal</button>
+              <button class="chip" data-type="neon">Neon</button>
+              <button class="chip" data-type="fun">Fun</button>
+              <button class="chip" data-type="dark">Dark</button>
+            </div>
+          </aside>
+
+          <section class="palettes-list-section">
+            <div class="palettes-grid" id="palettes-grid"></div>
+          </section>
+
+          <aside class="palette-preview" id="palette-preview">
+            <div class="palette-preview-inner">
+              <h2 class="preview-title">Palette Preview</h2>
+              <p class="preview-placeholder">
+                Select a palette to see how it could look in a UI.
+              </p>
+              <div class="preview-ui" aria-hidden="true">
+                <div class="preview-hero">
+                  <h3>Sample Hero Title</h3>
+                  <p>Preview how this palette could feel in a hero section.</p>
+                  <button class="btn btn-primary">Primary Action</button>
+                </div>
+                <div class="preview-card-row">
+                  <div class="preview-card">
+                    <h4>Card One</h4>
+                    <p>Supporting content for this palette.</p>
+                  </div>
+                  <div class="preview-card">
+                    <h4>Card Two</h4>
+                    <p>Supporting content for this palette.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <h3>ColorVerse</h3>
+          <p>Color psychology &amp; tools for designers and students.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="colors.html">Colors</a>
+          <a href="palettes.html">Palettes</a>
+          <a href="theory.html">Theory</a>
+          <a href="canvas.html">Canvas</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="footer-tech">
+          <p>Built with HTML • CSS • JavaScript • JSON</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ColorVerse — College Project</p>
+      </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/palettes.js"></script>
+  </body>
+</html>
+
+

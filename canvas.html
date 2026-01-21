@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Canvas – ColorVerse</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/canvas.css" />
+  </head>
+  <body data-page="canvas">
+    <header class="site-header">
+      <div class="navbar container">
+        <div class="nav-logo">
+          <a href="index.html">ColorVerse</a>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-nav="home">Home</a>
+          <a href="colors.html" data-nav="colors">Colors</a>
+          <a href="palettes.html" data-nav="palettes">Palettes</a>
+          <a href="theory.html" data-nav="theory">Theory</a>
+          <a href="canvas.html" data-nav="canvas">Canvas</a>
+          <a href="about.html" data-nav="about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main canvas-main">
+      <section class="section canvas-hero">
+        <div class="container">
+          <h1 class="page-title">Color Canvas &amp; Mixer</h1>
+          <p class="section-description">
+            Experiment with colors using a simple drawing canvas. Pick colors,
+            adjust brush size, undo strokes and clear the canvas.
+          </p>
+        </div>
+      </section>
+
+      <section class="section canvas-layout">
+        <div class="container canvas-grid-layout">
+          <aside class="canvas-tools">
+            <h2>Tools</h2>
+            <div class="tool-group">
+              <label for="brush-color">Brush color</label>
+              <input type="color" id="brush-color" value="#ff6b6b" />
+            </div>
+            <div class="tool-group">
+              <label for="brush-opacity">Brush opacity (mix strength)</label>
+              <input
+                type="range"
+                id="brush-opacity"
+                min="0.1"
+                max="1"
+                step="0.05"
+                value="0.65"
+              />
+              <span id="brush-opacity-label">65%</span>
+            </div>
+            <div class="tool-group">
+              <label for="brush-size">Brush size</label>
+              <input
+                type="range"
+                id="brush-size"
+                min="2"
+                max="30"
+                value="8"
+              />
+              <span id="brush-size-label">8 px</span>
+            </div>
+            <div class="tool-group">
+              <p class="tool-label">Mode</p>
+              <div class="chip-row">
+                <button class="chip active" id="mode-draw">Draw</button>
+                <button class="chip" id="mode-erase">Eraser</button>
+              </div>
+            </div>
+            <div class="tool-group">
+              <p class="tool-label">Mixing</p>
+              <div class="chip-row">
+                <button class="chip active" id="blend-normal">Normal</button>
+                <button class="chip" id="blend-multiply">Mix (Multiply)</button>
+                <button class="chip" id="blend-screen">Glow (Screen)</button>
+              </div>
+            </div>
+            <div class="tool-group buttons">
+              <button class="btn btn-secondary" id="undo-btn">Undo</button>
+              <button class="btn btn-ghost" id="clear-btn">Clear Canvas</button>
+            </div>
+            <p class="canvas-note">
+              Tip: Try layering colors with different brush sizes to see how
+              they interact.
+            </p>
+          </aside>
+
+          <section class="canvas-area">
+            <canvas id="paint-canvas" width="900" height="520">
+              Your browser does not support the HTML canvas element.
+            </canvas>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <h3>ColorVerse</h3>
+          <p>Color psychology &amp; tools for designers and students.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="colors.html">Colors</a>
+          <a href="palettes.html">Palettes</a>
+          <a href="theory.html">Theory</a>
+          <a href="canvas.html">Canvas</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="footer-tech">
+          <p>Built with HTML • CSS • JavaScript • JSON</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ColorVerse — College Project</p>
+      </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/canvas.js"></script>
+  </body>
+</html>
+
+

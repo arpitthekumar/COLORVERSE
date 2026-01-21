@@ -1,0 +1,196 @@
+[
+  {
+    "id": "royal-blue",
+    "name": "Royal Blue",
+    "hex": "#4169E1",
+    "rgb": "65,105,225",
+    "hsl": "225,73%,57%",
+    "emotionTags": ["trust", "stability", "confidence"],
+    "shortEmotion": "Trust, confidence and stability.",
+    "psychology": "Royal blue is associated with reliability and professionalism, often used to build trust in brands and interfaces.",
+    "usage": {
+      "branding": ["tech", "finance", "corporate"],
+      "ui": ["navigation bars", "primary buttons", "backgrounds"],
+      "other": ["formal fashion", "office environments"]
+    },
+    "temperature": "cool",
+    "vibe": ["professional", "calm"],
+    "category": ["blue", "luxury"],
+    "avoid": [
+      "Overusing it in playful or informal contexts where warmth is needed",
+      "Using low-contrast text on top of deep royal blue"
+    ],
+    "recommended": [
+      "Financial dashboards",
+      "Corporate websites",
+      "Professional SaaS products"
+    ],
+    "astrology": {
+      "zodiac": ["Aquarius", "Libra"],
+      "planet": "Saturn",
+      "keywords": ["clarity", "truth", "calm mind"]
+    }
+  },
+  {
+    "id": "soft-pink",
+    "name": "Soft Pink",
+    "hex": "#F9A8D4",
+    "rgb": "249,168,212",
+    "hsl": "326,84%,82%",
+    "emotionTags": ["gentle", "romantic", "playful"],
+    "shortEmotion": "Gentle, friendly and approachable.",
+    "psychology": "Soft pink is linked to kindness, romance and a gentle, nurturing feeling. It often softens the tone of a brand.",
+    "usage": {
+      "branding": ["beauty", "lifestyle", "wedding"],
+      "ui": ["badges", "highlight sections", "background washes"],
+      "other": ["packaging", "event invitations"]
+    },
+    "temperature": "warm",
+    "vibe": ["playful", "soft"],
+    "category": ["pink", "pastel"],
+    "avoid": [
+      "Serious corporate contexts that require strong authority",
+      "Excessive use in interfaces that need strong contrast for accessibility"
+    ],
+    "recommended": [
+      "Social media graphics",
+      "Beauty and skincare landing pages",
+      "Friendly onboarding flows"
+    ],
+    "astrology": {
+      "zodiac": ["Taurus", "Libra"],
+      "planet": "Venus",
+      "keywords": ["love", "comfort", "harmony"]
+    }
+  },
+  {
+    "id": "emerald",
+    "name": "Emerald Green",
+    "hex": "#10B981",
+    "rgb": "16,185,129",
+    "hsl": "160,84%,39%",
+    "emotionTags": ["growth", "balance", "fresh"],
+    "shortEmotion": "Growth, renewal and balance.",
+    "psychology": "Emerald green evokes nature, health and prosperity. It feels fresh and modern when used in digital products.",
+    "usage": {
+      "branding": ["eco brands", "health", "finance"],
+      "ui": ["success states", "confirmation badges", "secondary buttons"],
+      "other": ["sustainable packaging", "natural product lines"]
+    },
+    "temperature": "cool",
+    "vibe": ["natural", "calm"],
+    "category": ["green", "nature"],
+    "avoid": [
+      "Overuse in error or warning contexts where red or amber is expected",
+      "Using very saturated emerald with equally bright backgrounds"
+    ],
+    "recommended": [
+      "Sustainability dashboards",
+      "Health & fitness apps",
+      "Investment apps that want a modern, natural look"
+    ],
+    "astrology": {
+      "zodiac": ["Virgo", "Taurus"],
+      "planet": "Mercury",
+      "keywords": ["growth", "healing", "balance"]
+    }
+  },
+  {
+    "id": "sunny-yellow",
+    "name": "Sunny Yellow",
+    "hex": "#FACC15",
+    "rgb": "250,204,21",
+    "hsl": "50,97%,53%",
+    "emotionTags": ["joy", "optimism", "energy"],
+    "shortEmotion": "Joyful, optimistic and energetic.",
+    "psychology": "Bright yellow catches attention quickly and is associated with optimism, creativity and warmth.",
+    "usage": {
+      "branding": ["food", "kids brands", "creative studios"],
+      "ui": ["highlight banners", "callouts", "empty state illustrations"],
+      "other": ["posters", "event branding"]
+    },
+    "temperature": "warm",
+    "vibe": ["energetic", "playful"],
+    "category": ["yellow"],
+    "avoid": [
+      "Large areas of pure yellow behind white text",
+      "Serious contexts like finance or healthcare where calm is needed"
+    ],
+    "recommended": [
+      "Hero accents on fun landing pages",
+      "Call-to-action icons",
+      "Illustrations for learning content"
+    ],
+    "astrology": {
+      "zodiac": ["Leo", "Gemini"],
+      "planet": "Sun",
+      "keywords": ["confidence", "joy", "creative spark"]
+    }
+  },
+  {
+    "id": "charcoal",
+    "name": "Charcoal",
+    "hex": "#111827",
+    "rgb": "17,24,39",
+    "hsl": "222,39%,11%",
+    "emotionTags": ["serious", "modern", "neutral"],
+    "shortEmotion": "Serious, modern and stable.",
+    "psychology": "Charcoal is a neutral, grounding color. It adds sophistication without the harshness of pure black.",
+    "usage": {
+      "branding": ["tech", "luxury", "editorial"],
+      "ui": ["backgrounds", "navigation", "dark mode surfaces"],
+      "other": ["packaging", "typography emphasis"]
+    },
+    "temperature": "neutral",
+    "vibe": ["professional", "minimal"],
+    "category": ["neutral"],
+    "avoid": [
+      "Using charcoal text on very dark backgrounds",
+      "Combining with low-contrast muted colors for critical text"
+    ],
+    "recommended": [
+      "Dark mode dashboards",
+      "Serious editorial layouts",
+      "Contrast base for bright accent colors"
+    ],
+    "astrology": {
+      "zodiac": ["Capricorn", "Scorpio"],
+      "planet": "Saturn",
+      "keywords": ["authority", "discipline", "depth"]
+    }
+  },
+  {
+    "id": "lavender",
+    "name": "Lavender",
+    "hex": "#C4B5FD",
+    "rgb": "196,181,253",
+    "hsl": "254,95%,85%",
+    "emotionTags": ["calm", "creative", "dreamy"],
+    "shortEmotion": "Calm, dreamy and slightly mystical.",
+    "psychology": "Lavender combines the stability of blue with the energy of red, often associated with imagination and calm spirituality.",
+    "usage": {
+      "branding": ["creative agencies", "wellness", "education"],
+      "ui": ["background gradients", "empty states", "secondary accents"],
+      "other": ["illustration highlights", "brand gradients"]
+    },
+    "temperature": "cool",
+    "vibe": ["calm", "soft"],
+    "category": ["purple", "pastel"],
+    "avoid": [
+      "Critical warning states that need strong urgency",
+      "Highly formal corporate dashboards on its own"
+    ],
+    "recommended": [
+      "Gradient backgrounds with blue and pink",
+      "Highlighting creative or inspirational content",
+      "Calm onboarding screens"
+    ],
+    "astrology": {
+      "zodiac": ["Pisces", "Aquarius"],
+      "planet": "Neptune",
+      "keywords": ["intuition", "imagination", "soft energy"]
+    }
+  }
+]
+
+

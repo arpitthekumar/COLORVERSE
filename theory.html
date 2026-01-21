@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Theory – ColorVerse</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/theory.css" />
+  </head>
+  <body data-page="theory">
+    <header class="site-header">
+      <div class="navbar container">
+        <div class="nav-logo">
+          <a href="index.html">ColorVerse</a>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-nav="home">Home</a>
+          <a href="colors.html" data-nav="colors">Colors</a>
+          <a href="palettes.html" data-nav="palettes">Palettes</a>
+          <a href="theory.html" data-nav="theory">Theory</a>
+          <a href="canvas.html" data-nav="canvas">Canvas</a>
+          <a href="about.html" data-nav="about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main theory-main">
+      <section class="section theory-hero">
+        <div class="container">
+          <h1 class="page-title">Color Theory &amp; Relationships</h1>
+          <p class="section-description">
+            Learn how primary, secondary and advanced color relationships work
+            on the color wheel. Click a segment to highlight complementary,
+            analogous and triadic schemes.
+          </p>
+        </div>
+      </section>
+
+      <section class="section theory-layout">
+        <div class="container theory-grid-layout">
+          <section class="theory-wheel-section">
+            <h2>Interactive Color Wheel</h2>
+            <div class="theory-wheel" id="theory-wheel">
+              <!-- Segments will be created by JS based on theory.json -->
+            </div>
+          </section>
+
+          <aside class="theory-relations" id="theory-relations">
+            <div class="relations-inner">
+              <h2>Relationships</h2>
+              <p class="relations-placeholder">
+                Click a color on the wheel to see its complementary, analogous
+                and triadic relationships.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section theory-cards-section">
+        <div class="container">
+          <h2 class="section-title">Color Theory Basics</h2>
+          <div class="theory-cards" id="theory-cards">
+            <!-- Cards from theory.json -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <h3>ColorVerse</h3>
+          <p>Color psychology &amp; tools for designers and students.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="colors.html">Colors</a>
+          <a href="palettes.html">Palettes</a>
+          <a href="theory.html">Theory</a>
+          <a href="canvas.html">Canvas</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="footer-tech">
+          <p>Built with HTML • CSS • JavaScript • JSON</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ColorVerse — College Project</p>
+      </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/theory.js"></script>
+  </body>
+</html>
+
+

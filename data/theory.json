@@ -1,0 +1,90 @@
+{
+  "wheel": {
+    "segments": [
+      { "id": "red", "name": "Red", "hex": "#EF4444", "keywords": ["strength", "passion", "excitement"] },
+      { "id": "red-orange", "name": "Red-Orange", "hex": "#F97316", "keywords": ["energy", "action", "warmth"] },
+      { "id": "orange", "name": "Orange", "hex": "#FB923C", "keywords": ["optimism", "adventure", "fun"] },
+      { "id": "yellow-orange", "name": "Yellow-Orange", "hex": "#FDBA74", "keywords": ["friendly", "welcoming", "bold"] },
+      { "id": "yellow", "name": "Yellow", "hex": "#FACC15", "keywords": ["joy", "creativity", "optimism"] },
+      { "id": "yellow-green", "name": "Yellow-Green", "hex": "#A3E635", "keywords": ["freshness", "youth", "growth"] },
+      { "id": "green", "name": "Green", "hex": "#22C55E", "keywords": ["growth", "balance", "health"] },
+      { "id": "blue-green", "name": "Blue-Green", "hex": "#22C9C9", "keywords": ["calm", "clarity", "purity"] },
+      { "id": "blue", "name": "Blue", "hex": "#3B82F6", "keywords": ["trust", "honesty", "reliability"] },
+      { "id": "blue-violet", "name": "Blue-Violet", "hex": "#6366F1", "keywords": ["wisdom", "imagination", "depth"] },
+      { "id": "violet", "name": "Violet", "hex": "#8B5CF6", "keywords": ["originality", "spirituality", "idealism"] },
+      { "id": "red-violet", "name": "Red-Violet", "hex": "#EC4899", "keywords": ["romance", "hope", "warmth"] }
+    ],
+    "relationships": [
+      {
+        "type": "complementary",
+        "name": "Complementary Colors",
+        "description": "Colors that sit directly opposite each other on the wheel, creating strong contrast and visual energy.",
+        "examples": [
+          { "base": "red", "match": "green" },
+          { "base": "blue", "match": "orange" },
+          { "base": "yellow", "match": "violet" }
+        ]
+      },
+      {
+        "type": "analogous",
+        "name": "Analogous Colors",
+        "description": "Colors that sit next to each other on the wheel. They are naturally harmonious and feel calm when used together.",
+        "examples": [
+          { "base": "blue", "neighbors": ["blue-violet", "blue-green"] },
+          { "base": "red", "neighbors": ["red-orange", "red-violet"] },
+          { "base": "yellow", "neighbors": ["yellow-orange", "yellow-green"] }
+        ]
+      },
+      {
+        "type": "triadic",
+        "name": "Triadic Colors",
+        "description": "Three colors evenly spaced around the wheel. They balance contrast and harmony when saturation is controlled.",
+        "examples": [
+          { "set": ["red", "yellow", "blue"] },
+          { "set": ["orange", "green", "violet"] }
+        ]
+      },
+      {
+        "type": "split-complementary",
+        "name": "Split Complementary",
+        "description": "A base color plus the two neighbors of its complementary color, giving contrast with less tension than pure complementary.",
+        "examples": [
+          { "base": "blue", "matches": ["red-orange", "yellow-orange"] },
+          { "base": "red", "matches": ["blue-green", "yellow-green"] }
+        ]
+      }
+    ]
+  },
+  "theoryCards": [
+    {
+      "id": "primary-colors",
+      "title": "Primary Colors",
+      "summary": "Red, yellow and blue are the traditional primary colors in art.",
+      "details": "They cannot be created by mixing other pigments in subtractive systems and act as the base for many palettes.",
+      "highlightColors": ["red", "yellow", "blue"]
+    },
+    {
+      "id": "secondary-colors",
+      "title": "Secondary Colors",
+      "summary": "Green, orange and violet are created by mixing pairs of primaries.",
+      "details": "They sit between the primaries on the wheel and often appear in vibrant, energetic palettes.",
+      "highlightColors": ["green", "orange", "violet"]
+    },
+    {
+      "id": "analogous",
+      "title": "Analogous Schemes",
+      "summary": "Analogous schemes use neighbors on the wheel for smooth transitions.",
+      "details": "They are ideal for backgrounds, gradients and calm interfaces where softness is more important than contrast.",
+      "highlightColors": ["blue", "blue-violet", "blue-green"]
+    },
+    {
+      "id": "complementary",
+      "title": "Complementary Schemes",
+      "summary": "Complementary schemes pair opposites, like blue and orange.",
+      "details": "They create high contrast and are powerful for call-to-action buttons and accents, but should be balanced with neutrals.",
+      "highlightColors": ["blue", "orange"]
+    }
+  ]
+}
+
+
