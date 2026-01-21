@@ -96,6 +96,11 @@ img {
   color: var(--text-strong);
 }
 
+.nav-logo .span-color {
+  color: var(--accent-1);
+  transition: color 0.25s ease;
+}
+
 .nav-links {
   display: flex;
   gap: 1.4rem;
