@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Flipper – ColorVerse</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/flipper.css" />
+  </head>
+  <body data-page="flipper">
+    <header class="site-header">
+      <div class="navbar container">
+        <div class="nav-logo">
+          <a href="index.html">Color<span class="span-color">Verse</span></a>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-nav="home">Home</a>
+          <a href="colors.html" data-nav="colors">Colors</a>
+          <a href="palettes.html" data-nav="palettes">Palettes</a>
+          <a href="theory.html" data-nav="theory">Theory</a>
+          <a href="canvas.html" data-nav="canvas">Canvas</a>
+          <a href="flipper.html" data-nav="flipper">Flipper</a>
+          <a href="about.html" data-nav="about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main flipper-main">
+      <section class="section flipper-hero">
+        <div class="container">
+          <h1 class="page-title">Interactive Color Flipper</h1>
+          <p class="section-description">
+            Generate random colors using <code>Math.random()</code>, custom Hex
+            algorithms, and live DOM background styling.
+          </p>
+        </div>
+      </section>
+
+      <section class="section flipper-content">
+        <div class="container flipper-container">
+          <!-- Mode Tabs -->
+          <div class="flipper-mode-tabs">
+            <button class="mode-tab-btn active" data-mode="hex">Hex Generator</button>
+            <button class="mode-tab-btn" data-mode="simple">Named Colors</button>
+            <button class="mode-tab-btn" data-mode="rgb">RGB Generator</button>
+          </div>
+
+          <!-- Stage Card -->
+          <div id="flipper-stage" class="flipper-stage-card">
+            <div class="flipper-canvas-inner">
+              <span id="mode-badge" class="flipper-badge">HEX COLOR</span>
+              <h2 id="color-code-display" class="color-code-display" title="Click to copy">
+                #3B82F6
+              </h2>
+              <div class="color-meta-details">
+                <span id="rgb-chip" class="meta-chip">rgb(59, 130, 246)</span>
+                <span id="contrast-chip" class="meta-chip">Dark Theme Tone</span>
+              </div>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flipper-actions">
+              <button id="flip-btn" class="btn-flip-primary" title="Press Spacebar to flip">
+                <span>🎲</span> Flip Color <small style="opacity: 0.6; font-size: 0.8em; margin-left: 2px;">(Space)</small>
+              </button>
+              <button id="copy-btn" class="btn-flipper-tool">
+                <span>📋</span> Copy Code
+              </button>
+              <button id="auto-flip-btn" class="btn-flipper-tool">
+                <span>▶</span> Auto Flip
+              </button>
+            </div>
+          </div>
+
+          <!-- Target Mode Toggle -->
+          <div class="target-toggle-wrap">
+            <span>Apply to card only</span>
+            <label class="switch">
+              <input type="checkbox" id="target-body-toggle" />
+              <span class="slider"></span>
+            </label>
+            <span>Apply to whole page background</span>
+          </div>
+
+          <!-- Color History Strip -->
+          <div class="flipper-history-panel">
+            <div class="history-header">
+              <h3>Recently Flipped Colors</h3>
+              <button id="clear-history-btn" class="history-clear-btn">Clear</button>
+            </div>
+            <div id="history-strip" class="history-strip">
+              <p class="history-empty-msg">No colors flipped yet. Click "Flip Color" to start collecting!</p>
+            </div>
+          </div>
+
+          <!-- Educational Explainer: Hex generation, Math.random(), DOM styling -->
+          <div class="code-explainer-card">
+            <h3><span>💡</span> How It Works Under The Hood</h3>
+            <p>
+              This color flipper demonstrates three core JavaScript concepts:
+              random hexadecimal generation, algorithmic iteration with
+              <code>Math.random()</code>, and dynamic DOM manipulation.
+            </p>
+
+            <pre class="code-block-preview"><code><span class="code-comment">// 1. Hex character collection</span>
+<span class="code-keyword">const</span> hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, <span class="code-str">"A"</span>, <span class="code-str">"B"</span>, <span class="code-str">"C"</span>, <span class="code-str">"D"</span>, <span class="code-str">"E"</span>, <span class="code-str">"F"</span>];
+
+<span class="code-comment">// 2. Generating a random Hex code using Math.random()</span>
+<span class="code-keyword">function</span> <span class="code-fn">getRandomHex</span>() {
+  <span class="code-keyword">let</span> hexColor = <span class="code-str">"#"</span>;
+  <span class="code-keyword">for</span> (<span class="code-keyword">let</span> i = 0; i &lt; 6; i++) {
+    <span class="code-keyword">const</span> randomIndex = Math.<span class="code-fn">floor</span>(Math.<span class="code-fn">random</span>() * hex.length);
+    hexColor += hex[randomIndex];
+  }
+  <span class="code-keyword">return</span> hexColor;
+}
+
+<span class="code-comment">// 3. DOM Styling: Updating elements dynamically</span>
+<span class="code-keyword">const</span> color = <span class="code-fn">getRandomHex</span>();
+document.<span class="code-fn">getElementById</span>(<span class="code-str">"flipper-stage"</span>).style.backgroundColor = color;
+document.<span class="code-fn">getElementById</span>(<span class="code-str">"color-code-display"</span>).textContent = color;</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast-notice" class="toast-notice">
+      <span class="toast-icon">✓</span>
+      <span id="toast-msg">Copied to clipboard!</span>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <h3>ColorVerse</h3>
+          <p>Color psychology &amp; tools for designers and students.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="colors.html">Colors</a>
+          <a href="palettes.html">Palettes</a>
+          <a href="theory.html">Theory</a>
+          <a href="canvas.html">Canvas</a>
+          <a href="flipper.html">Flipper</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="footer-tech">
+          <p>Built with HTML • CSS • JavaScript • JSON</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ColorVerse — College Project</p>
+      </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/flipper.js"></script>
+  </body>
+</html>
