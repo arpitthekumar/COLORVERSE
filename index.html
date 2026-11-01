@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ColorVerse – Explore Colors, Emotions & Design</title>
+    <title>ColorVerse – Explore Colors, Emotions & Interactive Design</title>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/home.css" />
   </head>
   <body data-page="home">
+    <!-- Navigation Header -->
     <header class="site-header">
       <div class="navbar container">
         <div class="nav-logo">
@@ -27,185 +28,282 @@
     </header>
 
     <main class="home-main">
+      <!-- 1. Hero Section with Live Palette Studio -->
       <section class="hero">
         <div class="container hero-inner">
           <div class="hero-text">
-            <h1 class="hero-title">Explore Colors, Emotions &amp; Design</h1>
+            <div class="hero-badge-pill">
+              <span class="hero-badge-dot"></span>
+              <span>ColorVerse 2.0 • Interactive Color Suite</span>
+            </div>
+
+            <h1 class="hero-title">
+              Master Color Psychology, <br />
+              <span class="gradient-text">Harmonies &amp; Creative Tools</span>
+            </h1>
+
             <p class="hero-subtitle">
-              ColorVerse is a visual, interactive space to understand color
-              psychology, color theory and practical palettes for real projects.
+              An all-in-one interactive color encyclopedia and creative laboratory.
+              Explore emotional psychology, test typing speed with ChromaTyper,
+              generate color-matched Python QR codes, and experiment with live drawing canvases.
             </p>
+
             <div class="hero-actions">
-              <a class="btn btn-primary" href="colors.html">Explore Colors</a>
-              <a class="btn btn-ghost" href="canvas.html">Try Color Canvas</a>
+              <a class="btn-hero-primary" href="colors.html">
+                <span>🎨</span> Explore Colors
+              </a>
+              <a class="btn-hero-secondary" href="flipper.html">
+                <span>🎲</span> Color Flipper
+              </a>
+              <a class="btn-hero-secondary" href="typing.html">
+                <span>⌨️</span> ChromaTyper
+              </a>
             </div>
           </div>
-          <div class="hero-visual">
-            <div class="hero-wheel">
-              <div class="wheel-segment seg-red"></div>
-              <div class="wheel-segment seg-orange"></div>
-              <div class="wheel-segment seg-yellow"></div>
-              <div class="wheel-segment seg-green"></div>
-              <div class="wheel-segment seg-blue"></div>
-              <div class="wheel-segment seg-purple"></div>
+
+          <!-- Hero Visual: Interactive Live Palette Studio -->
+          <div class="hero-studio-card">
+            <div class="studio-header">
+              <div class="studio-title-wrap">
+                <h3><span>✨</span> Interactive Harmony Studio</h3>
+                <span id="studio-theme-name" class="studio-theme-name">Cyberpunk Neon • High Energy</span>
+              </div>
+              <button id="shuffle-studio-btn" class="btn-shuffle-studio" title="Shuffle color harmony">
+                <span>🎲</span> Shuffle
+              </button>
             </div>
-            <p class="hero-visual-caption">
-              A mini view of how colors connect with emotions and theory.
+
+            <!-- 5 Clickable Swatches -->
+            <div id="studio-swatches-strip" class="studio-swatches-strip">
+              <!-- Rendered dynamically by js/home.js -->
+            </div>
+
+            <!-- Live UI Component Preview -->
+            <div class="studio-preview-mockup">
+              <div class="mockup-left">
+                <span id="mockup-badge" class="mockup-badge">Cyberpunk Theme</span>
+                <span class="mockup-heading">Interactive Color Preview</span>
+              </div>
+              <button id="mockup-btn" class="mockup-btn">Primary Action</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Quick Stats Strip -->
+      <section class="stats-strip-section">
+        <div class="container">
+          <div class="stats-strip-container">
+            <div class="stat-item">
+              <div class="stat-num">50+</div>
+              <div class="stat-text">Curated Emotional Hues</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">24+</div>
+              <div class="stat-text">Production Palettes</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">6</div>
+              <div class="stat-text">Interactive Creative Tools</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">100%</div>
+              <div class="stat-text">Python &amp; Client Powered</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Modern Bento Grid: Featured Interactive Tools -->
+      <section class="bento-section">
+        <div class="container">
+          <div class="section-header-center">
+            <h2 class="section-title">Explore The Creative Suite</h2>
+            <p class="section-description">
+              Data-driven color exploration powered by mathematical algorithms,
+              Python image processing, and hands-on canvas experimentation.
             </p>
           </div>
-        </div>
-      </section>
 
-      <section class="section what-is">
-        <div class="container">
-          <h2 class="section-title">What is ColorVerse?</h2>
-          <p class="section-description">
-            ColorVerse is a color knowledge &amp; exploration hub that combines
-            psychology, theory and interactive tools to help you make better
-            color decisions in design, branding and UI.
-          </p>
-          <div class="info-cards">
-            <article class="info-card">
-              <h3>Color Psychology</h3>
-              <p>
-                Learn how colors influence emotions, perception and decisions in
-                marketing and design.
-              </p>
-            </article>
-            <article class="info-card">
-              <h3>Color Theory</h3>
-              <p>
-                Understand primary, secondary and advanced harmony schemes with
-                visual diagrams.
-              </p>
-            </article>
-            <article class="info-card">
-              <h3>Interactive Tools</h3>
-              <p>
-                Explore color grids, curated palettes and a live color canvas to
-                experiment hands-on.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+          <div class="bento-grid">
+            <!-- Bento 1 (Span 2): Color Flipper + Python QR -->
+            <a href="flipper.html" class="bento-card span-2-col">
+              <div class="bento-top-row">
+                <div class="bento-icon-box icon-flipper">🎲</div>
+                <span class="bento-tag tag-python">Python QR &amp; DOM Math</span>
+              </div>
+              <div class="bento-body">
+                <h3>Interactive Color Flipper &amp; QR Generator</h3>
+                <p>
+                  Generate random hexadecimal colors with <code>Math.random()</code>,
+                  manipulate live DOM background styling with dynamic contrast calculation,
+                  and export custom color-encoded QR codes generated via Python Flask &amp; Pillow.
+                </p>
+              </div>
+              <span class="bento-footer-link">Try Color Flipper &amp; QR →</span>
+            </a>
 
-      <section class="section features">
-        <div class="container">
-          <h2 class="section-title">Why this tool is powerful</h2>
-          <p class="section-description">
-            Built as a data-driven, interactive mini color encyclopedia for
-            designers, students and developers.
-          </p>
-          <div class="feature-grid">
-            <article class="feature-card">
-              <h3>Color Explorer</h3>
-              <p>Browse colors with meanings, categories and usage tips.</p>
-            </article>
-            <article class="feature-card">
-              <h3>Palette Library</h3>
-              <p>Use curated palettes like Calm Coastal, Gotham and Pastel Sets.</p>
-            </article>
-            <article class="feature-card">
-              <h3>Color Theory Visuals</h3>
-              <p>See complementary, analogous and triadic relationships.</p>
-            </article>
-            <article class="feature-card">
-              <h3>Color Canvas</h3>
-              <p>Mix and paint with colors using an interactive canvas tool.</p>
-            </article>
-            <article class="feature-card">
-              <h3>JSON Data Driven</h3>
-              <p>All colors and palettes are loaded from simple JSON files.</p>
-            </article>
-            <article class="feature-card">
-              <h3>Search &amp; Filters</h3>
-              <p>Quickly find colors by name, emotion and visual category.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+            <!-- Bento 2: ChromaTyper -->
+            <a href="typing.html" class="bento-card">
+              <div class="bento-top-row">
+                <div class="bento-icon-box icon-typing">⌨️</div>
+                <span class="bento-tag tag-new">New Feature</span>
+              </div>
+              <div class="bento-body">
+                <h3>ChromaTyper Speed Tester</h3>
+                <p>
+                  Test your WPM kinetics and accuracy algorithms across 4 color modes
+                  including the Stroop Effect cognitive mind challenge.
+                </p>
+              </div>
+              <span class="bento-footer-link">Launch ChromaTyper →</span>
+            </a>
 
-      <section class="section previews">
-        <div class="container">
-          <h2 class="section-title">Explore the sections</h2>
-          <div class="preview-grid">
-            <a href="colors.html" class="preview-card">
-              <div class="preview-thumb preview-colors">
-                <div class="color-sample"></div>
-                <div class="color-sample"></div>
-                <div class="color-sample"></div>
-                <div class="color-sample"></div>
+            <!-- Bento 3: Color Explorer -->
+            <a href="colors.html" class="bento-card">
+              <div class="bento-top-row">
+                <div class="bento-icon-box icon-colors">🎨</div>
+                <span class="bento-tag">Psychology Matrix</span>
               </div>
-              <div class="preview-text">
-                <h3>Colors Explorer</h3>
-                <p>View color grid with meaning and usage.</p>
+              <div class="bento-body">
+                <h3>Color Explorer &amp; Emotions</h3>
+                <p>
+                  Browse curated color shades with psychology profiles, emotional triggers,
+                  and branding recommendations.
+                </p>
               </div>
+              <span class="bento-footer-link">Explore Colors →</span>
             </a>
-            <a href="palettes.html" class="preview-card">
-              <div class="preview-thumb preview-palettes">
-                <div class="palette-strip"></div>
+
+            <!-- Bento 4: Color Theory -->
+            <a href="theory.html" class="bento-card">
+              <div class="bento-top-row">
+                <div class="bento-icon-box icon-theory">📐</div>
+                <span class="bento-tag">Visual Harmonies</span>
               </div>
-              <div class="preview-text">
-                <h3>Palette Collections</h3>
-                <p>Browse curated palettes for branding and UI.</p>
+              <div class="bento-body">
+                <h3>Color Theory Visualizer</h3>
+                <p>
+                  Understand the 12-step wheel, complementary pairs, analogous sets,
+                  and triadic harmonies with interactive geometry.
+                </p>
               </div>
+              <span class="bento-footer-link">Study Theory →</span>
             </a>
-            <a href="theory.html" class="preview-card">
-              <div class="preview-thumb preview-theory">
-                <div class="mini-wheel"></div>
+
+            <!-- Bento 5: Color Canvas -->
+            <a href="canvas.html" class="bento-card">
+              <div class="bento-top-row">
+                <div class="bento-icon-box icon-canvas">🖌️</div>
+                <span class="bento-tag">Live Drawing</span>
               </div>
-              <div class="preview-text">
-                <h3>Color Theory</h3>
-                <p>Understand wheel relationships and harmonies.</p>
+              <div class="bento-body">
+                <h3>Color Canvas &amp; Mixer</h3>
+                <p>
+                  Mix paint, adjust opacity and brush sizes, and experiment with stroke
+                  blending on an interactive HTML5 canvas.
+                </p>
               </div>
-            </a>
-            <a href="canvas.html" class="preview-card">
-              <div class="preview-thumb preview-canvas">
-                <div class="canvas-mock"></div>
-              </div>
-              <div class="preview-text">
-                <h3>Color Canvas</h3>
-                <p>Mix and draw with colors on a live canvas.</p>
-              </div>
-            </a>
-            <a href="flipper.html" class="preview-card">
-              <div class="preview-thumb preview-flipper">
-                <div class="flipper-dice-mock">🎲</div>
-              </div>
-              <div class="preview-text">
-                <h3>Color Flipper</h3>
-                <p>Hex code generator with live DOM styling.</p>
-              </div>
-            </a>
-            <a href="typing.html" class="preview-card">
-              <div class="preview-thumb preview-typing">
-                <div class="typing-mock">⌨️</div>
-              </div>
-              <div class="preview-text">
-                <h3>ChromaTyper</h3>
-                <p>Speed tester with color modes &amp; time deltas.</p>
-              </div>
+              <span class="bento-footer-link">Open Canvas →</span>
             </a>
           </div>
         </div>
       </section>
 
-      <section class="section cta">
-        <div class="container cta-inner">
-          <h2 class="cta-title">Start exploring colors now</h2>
-          <p class="cta-text">
-            Use ColorVerse to make confident color decisions in your designs,
-            projects and brands.
-          </p>
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="colors.html">Explore Colors</a>
-            <a class="btn btn-ghost" href="flipper.html">Try Color Flipper</a>
+      <!-- 4. Color Psychology Spotlight Section -->
+      <section class="psychology-spotlight-section">
+        <div class="container">
+          <div class="section-header-center">
+            <h2 class="section-title">The Psychology of Color</h2>
+            <p class="section-description">
+              Colors evoke subconscious reactions. Click any tone below to see its psychological
+              influence, emotional triggers, and brand examples.
+            </p>
+          </div>
+
+          <div class="psych-showcase-box">
+            <!-- Left: Picker Buttons -->
+            <div class="psych-picker-list">
+              <button class="psych-pick-btn active" data-color="blue">
+                <span class="pick-indicator-dot" style="background: #3B82F6;"></span>
+                <span><strong>Blue</strong> — Trust &amp; Logic</span>
+              </button>
+              <button class="psych-pick-btn" data-color="red">
+                <span class="pick-indicator-dot" style="background: #EF4444;"></span>
+                <span><strong>Red</strong> — Passion &amp; Urgency</span>
+              </button>
+              <button class="psych-pick-btn" data-color="green">
+                <span class="pick-indicator-dot" style="background: #10B981;"></span>
+                <span><strong>Green</strong> — Growth &amp; Balance</span>
+              </button>
+              <button class="psych-pick-btn" data-color="yellow">
+                <span class="pick-indicator-dot" style="background: #F59E0B;"></span>
+                <span><strong>Yellow</strong> — Optimism &amp; Clarity</span>
+              </button>
+              <button class="psych-pick-btn" data-color="purple">
+                <span class="pick-indicator-dot" style="background: #8B5CF6;"></span>
+                <span><strong>Purple</strong> — Royalty &amp; Mystery</span>
+              </button>
+            </div>
+
+            <!-- Right: Dynamic Details Card -->
+            <div id="psych-display-card" class="psych-display-card">
+              <div class="psych-color-header">
+                <h3 id="psych-title-name" class="psych-title-name">Sapphire Blue</h3>
+                <span id="psych-badge-tone" class="psych-badge-tone">Cool Tone • Corporate &amp; Tech</span>
+              </div>
+              <p id="psych-emotions-p" class="psych-emotions-p">
+                Trust, dependability, logic, serenity and intellect. Reduces heart rate
+                and creates a sense of professional security.
+              </p>
+              <div>
+                <strong style="font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem;">Famous Brand Implementations:</strong>
+                <div id="psych-brands-wrap" class="psych-brands-wrap">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Technology Stack Strip -->
+      <section class="tech-stack-strip">
+        <div class="container">
+          <div class="tech-stack-title">Engineered With Clean Modern Architecture</div>
+          <div class="tech-pills-row">
+            <span class="tech-pill"><span>🐍</span> Python 3.10</span>
+            <span class="tech-pill"><span>⚡</span> Flask REST API</span>
+            <span class="tech-pill"><span>📱</span> Python qrcode</span>
+            <span class="tech-pill"><span>🖼️</span> Pillow (PIL)</span>
+            <span class="tech-pill"><span>🌐</span> HTML5 &amp; Canvas</span>
+            <span class="tech-pill"><span>🎨</span> Vanilla CSS3</span>
+            <span class="tech-pill"><span>⚡</span> ES6 JavaScript</span>
+            <span class="tech-pill"><span>📦</span> JSON Datasets</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Floating CTA Banner -->
+      <section class="section" style="padding-top: 1rem;">
+        <div class="container">
+          <div class="cta-banner-wrapper">
+            <h2>Start Exploring Colors in Depth</h2>
+            <p>
+              Join students, designers, and developers in mastering the art and science
+              of digital color selection with ColorVerse.
+            </p>
+            <div class="cta-banner-actions">
+              <a class="btn-hero-primary" href="colors.html">Browse Color Library</a>
+              <a class="btn-hero-secondary" href="flipper.html">Open Color Flipper</a>
+              <a class="btn-hero-secondary" href="typing.html">Try ChromaTyper</a>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
+    <!-- Site Footer -->
     <footer class="site-footer">
       <div class="container footer-content">
         <div class="footer-brand">
@@ -232,5 +330,6 @@
     </footer>
 
     <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
   </body>
 </html>
