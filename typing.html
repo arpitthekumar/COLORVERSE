@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChromaTyper – Color Typing Speed Tester – ColorVerse</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/typing.css" />
+  </head>
+  <body data-page="typing">
+    <header class="site-header">
+      <div class="navbar container">
+        <div class="nav-logo">
+          <a href="index.html">Color<span class="span-color">Verse</span></a>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-nav="home">Home</a>
+          <a href="colors.html" data-nav="colors">Colors</a>
+          <a href="palettes.html" data-nav="palettes">Palettes</a>
+          <a href="theory.html" data-nav="theory">Theory</a>
+          <a href="canvas.html" data-nav="canvas">Canvas</a>
+          <a href="flipper.html" data-nav="flipper">Flipper</a>
+          <a href="typing.html" data-nav="typing">Typing</a>
+          <a href="about.html" data-nav="about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main typing-main">
+      <section class="section typing-hero">
+        <div class="container">
+          <h1 class="page-title">ChromaTyper Speed Tester</h1>
+          <p class="section-description">
+            Test your typing speed (WPM) and accuracy with color themes. Measure
+            time deltas, track character accuracy, and challenge your brain with
+            Stroop effect color interference.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container typing-container">
+          <!-- Modes Bar -->
+          <div class="typing-modes-bar">
+            <button class="mode-pill-btn pill-easy active" data-mode="easy">
+              <span>🟢</span> Easy (Primary Colors)
+            </button>
+            <button class="mode-pill-btn pill-medium" data-mode="medium">
+              <span>🟡</span> Medium (Designer Hues)
+            </button>
+            <button class="mode-pill-btn pill-hex" data-mode="hex">
+              <span>🟣</span> Hard (Hex &amp; Theory)
+            </button>
+            <button class="mode-pill-btn pill-stroop" data-mode="stroop">
+              <span>🌈</span> Stroop Mind Challenge
+            </button>
+          </div>
+
+          <!-- Duration Selector -->
+          <div class="timer-selector-bar">
+            <span>Duration:</span>
+            <button class="duration-chip" data-time="15">15s</button>
+            <button class="duration-chip active" data-time="30">30s</button>
+            <button class="duration-chip" data-time="60">60s</button>
+          </div>
+
+          <!-- Live Stats Dashboard -->
+          <div class="typing-stats-hud">
+            <div class="stat-metric-card">
+              <div class="metric-label">Time Remaining</div>
+              <div class="metric-value"><span id="timer-val">30</span><span class="metric-unit">s</span></div>
+              <div class="metric-progress-ring"></div>
+            </div>
+
+            <div class="stat-metric-card">
+              <div class="metric-label">Net Speed</div>
+              <div class="metric-value"><span id="wpm-val">0</span><span class="metric-unit">WPM</span></div>
+              <div class="metric-progress-ring"></div>
+            </div>
+
+            <div class="stat-metric-card">
+              <div class="metric-label">Accuracy</div>
+              <div class="metric-value" id="accuracy-val">100%</div>
+              <div class="metric-progress-ring"></div>
+            </div>
+
+            <div class="stat-metric-card">
+              <div class="metric-label">Characters / Min</div>
+              <div class="metric-value" id="cpm-val">0</div>
+              <div class="metric-progress-ring"></div>
+            </div>
+          </div>
+
+          <!-- Typing Stage Card -->
+          <div id="typing-stage" class="typing-stage-card">
+            <!-- Word Spotlight Bar -->
+            <div class="word-spotlight-bar">
+              <div class="color-preview-badge">
+                <span id="current-color-dot" class="color-swatch-dot"></span>
+                <span id="current-color-name">COLOR FOCUS</span>
+              </div>
+              <span class="mode-tip-note">Type words and press <strong>Space</strong> to advance</span>
+            </div>
+
+            <!-- Words Stream Display -->
+            <div id="words-display" class="words-display-box">
+              <!-- Dynamically populated word chips -->
+            </div>
+
+            <!-- User Typing Input -->
+            <div class="typing-input-wrapper">
+              <input
+                type="text"
+                id="typing-input"
+                class="typing-main-input"
+                placeholder="Start typing here to begin timer..."
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+              />
+              <button id="restart-btn" class="btn-restart-typing" title="Restart test">
+                <span>🔄</span> Reset
+              </button>
+            </div>
+          </div>
+
+          <!-- Results Summary Card (Shown when test completes) -->
+          <div id="typing-result-card" class="typing-result-card">
+            <div id="result-rank" class="result-badge-rank">🎨 Chromatic Virtuoso</div>
+            <h2 id="result-wpm" class="result-hero-wpm">64</h2>
+            <div class="result-hero-sub">Words Per Minute (Net Speed)</div>
+
+            <div class="result-metrics-grid">
+              <div class="result-metric-item">
+                <div id="result-accuracy" class="val">98%</div>
+                <div class="lbl">Accuracy</div>
+              </div>
+              <div class="result-metric-item">
+                <div id="result-cpm" class="val">320</div>
+                <div class="lbl">Characters / Min</div>
+              </div>
+              <div class="result-metric-item">
+                <div id="result-time" class="val">30.0s</div>
+                <div class="lbl">Time Delta</div>
+              </div>
+              <div class="result-metric-item">
+                <div id="result-errors" class="val">1</div>
+                <div class="lbl">Uncorrected Errors</div>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button id="play-again-btn" class="btn btn-primary">
+                <span>⚡</span> Try Again
+              </button>
+              <button id="copy-result-btn" class="btn btn-ghost">
+                <span>📋</span> Copy Results
+              </button>
+            </div>
+          </div>
+
+          <!-- Algorithm Explanation Card -->
+          <div class="algorithm-explainer-card">
+            <h3><span>📐</span> Time Deltas &amp; Accuracy Calculation Algorithms</h3>
+            <p>
+              This typing test runs real-time mathematical algorithms to compute typing kinetics:
+            </p>
+
+            <pre class="code-block-preview"><code><span class="code-comment">// 1. Time Delta Calculation (Precision Timer)</span>
+<span class="code-keyword">const</span> timeDeltaSeconds = (performance.<span class="code-fn">now</span>() - startTime) / 1000;
+<span class="code-keyword">const</span> elapsedMinutes = timeDeltaSeconds / 60;
+
+<span class="code-comment">// 2. Net Words Per Minute (Standard 5 chars = 1 word)</span>
+<span class="code-keyword">const</span> netWPM = Math.<span class="code-fn">max</span>(0, Math.<span class="code-fn">round</span>(((correctChars / 5) - errorCount) / elapsedMinutes));
+
+<span class="code-comment">// 3. Accuracy Percentage Formula</span>
+<span class="code-keyword">const</span> accuracy = Math.<span class="code-fn">round</span>((correctChars / totalCharactersTyped) * 100);</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <h3>ColorVerse</h3>
+          <p>Color psychology &amp; tools for designers and students.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="colors.html">Colors</a>
+          <a href="palettes.html">Palettes</a>
+          <a href="theory.html">Theory</a>
+          <a href="canvas.html">Canvas</a>
+          <a href="flipper.html">Flipper</a>
+          <a href="typing.html">Typing</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="footer-tech">
+          <p>Built with Python • Flask • qrcode • HTML • CSS • JavaScript</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ColorVerse — College Project</p>
+      </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/typing.js"></script>
+  </body>
+</html>

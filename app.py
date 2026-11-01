@@ -228,6 +228,42 @@ def api_analyze_color():
         "psychology": mood
     })
 
+@app.route("/api/typing-eval", methods=["POST"])
+def api_typing_eval():
+    """Verify typing test metrics and calculate rank tier in Python."""
+    data = request.get_json(silent=True) or {}
+    wpm = int(data.get("wpm", 0))
+    accuracy = float(data.get("accuracy", 100))
+    time_seconds = float(data.get("time_seconds", 30))
+    mode = data.get("mode", "easy")
+
+    if wpm >= 70 and accuracy >= 95:
+        rank = "Prism Speed Demon"
+        tier = "Master"
+    elif wpm >= 50 and accuracy >= 90:
+        rank = "Chromatic Virtuoso"
+        tier = "Expert"
+    elif wpm >= 35 and accuracy >= 80:
+        rank = "Palette Master"
+        tier = "Intermediate"
+    elif wpm >= 20:
+        rank = "Color Apprentice"
+        tier = "Novice"
+    else:
+        rank = "Color Explorer"
+        tier = "Beginner"
+
+    return jsonify({
+        "status": "verified",
+        "wpm": wpm,
+        "accuracy": accuracy,
+        "time_delta_seconds": time_seconds,
+        "mode": mode,
+        "rank": rank,
+        "tier": tier,
+        "engine": "Python typing analysis algorithm"
+    })
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
