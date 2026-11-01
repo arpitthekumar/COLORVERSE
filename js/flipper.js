@@ -1,5 +1,5 @@
 // Color Flipper Logic for ColorVerse
-// Demonstrates Hex Code Generation, Math.random(), and Dynamic DOM Styling
+// Demonstrates Hex Code Generation, Math.random(), Dynamic DOM Styling, and Python QR Code Generation
 
 // 1. Hex character array
 const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
@@ -22,9 +22,12 @@ const simpleColors = [
 
 // State
 let currentMode = "hex"; // "hex" | "simple" | "rgb"
+let activeHex = "#3B82F6";
+let activeLabel = null;
 let autoFlipInterval = null;
 let colorHistory = [];
 let targetFullBody = false;
+let isPythonConnected = false;
 
 // DOM Elements
 const stageCard = document.getElementById("flipper-stage");
@@ -41,6 +44,16 @@ const clearHistoryBtn = document.getElementById("clear-history-btn");
 const targetBodyCheckbox = document.getElementById("target-body-toggle");
 const toast = document.getElementById("toast-notice");
 const toastMsg = document.getElementById("toast-msg");
+
+// QR Elements
+const qrImg = document.getElementById("qr-img");
+const qrCaption = document.getElementById("qr-caption");
+const pythonStatusBadge = document.getElementById("python-status-badge");
+const pythonStatusText = document.getElementById("python-status-text");
+const qrEncodeSelect = document.getElementById("qr-encode-select");
+const qrColorToggle = document.getElementById("qr-color-toggle");
+const downloadQrBtn = document.getElementById("download-qr-btn");
+const copyQrInfoBtn = document.getElementById("copy-qr-info-btn");
 
 /**
  * Generate a random 6-character Hex color using Math.random()
@@ -99,15 +112,39 @@ function hexToRGB(hexStr) {
  */
 function getContrastColor(hexStr) {
   const { r, g, b } = hexToRGB(hexStr);
-  // Perceived brightness formula (YIQ)
   const yiq = (r * 299 + g * 587 + b * 114) / 1000;
   return yiq >= 128 ? "#090d16" : "#ffffff";
 }
 
 /**
- * Apply the generated color to the DOM
+ * Apply or reset the full-page background color
+ */
+function updatePageBackground(colorHex) {
+  const root = document.documentElement;
+  const body = document.body;
+  if (targetFullBody && colorHex) {
+    root.classList.add("full-page-bg-active");
+    body.classList.add("full-page-bg-active");
+    root.style.setProperty("background-color", colorHex, "important");
+    body.style.setProperty("background-color", colorHex, "important");
+    root.style.setProperty("background-image", "none", "important");
+    body.style.setProperty("background-image", "none", "important");
+  } else {
+    root.classList.remove("full-page-bg-active");
+    body.classList.remove("full-page-bg-active");
+    root.style.removeProperty("background-color");
+    body.style.removeProperty("background-color");
+    root.style.removeProperty("background-image");
+    body.style.removeProperty("background-image");
+  }
+}
+
+/**
+ * Apply the generated color to the DOM and trigger QR generation
  */
 function applyColor(colorHex, customLabel = null) {
+  activeHex = colorHex;
+  activeLabel = customLabel;
   const contrastColor = getContrastColor(colorHex);
   const rgbInfo = hexToRGB(colorHex);
 
@@ -118,10 +155,8 @@ function applyColor(colorHex, customLabel = null) {
     stageCard.style.borderColor = `${contrastColor}33`;
   }
 
-  // 2. Optional: Full page background styling
-  if (targetFullBody) {
-    document.body.style.backgroundColor = colorHex;
-  }
+  // 2. Full page background styling (if enabled)
+  updatePageBackground(colorHex);
 
   // 3. Update Text and contrast
   if (colorDisplay) {
@@ -150,7 +185,10 @@ function applyColor(colorHex, customLabel = null) {
     modeBadge.style.borderColor = `${contrastColor}44`;
   }
 
-  // 5. Save to History
+  // 5. Update QR Code in real time
+  updateQRCode();
+
+  // 6. Save to History
   addToHistory(colorHex, contrastColor);
 }
 
@@ -174,6 +212,107 @@ function flipColor() {
   }
 
   applyColor(selectedColor, label);
+}
+
+/**
+ * Update the QR Code for the active color using Python API or client fallback
+ */
+function updateQRCode() {
+  if (!qrImg) return;
+
+  const hexCode = activeHex;
+  const rgbInfo = hexToRGB(hexCode);
+  const encodeMode = qrEncodeSelect ? qrEncodeSelect.value : "hex";
+  const colorChoice = qrColorToggle ? qrColorToggle.value : "colored";
+
+  // Determine text to encode
+  let textToEncode = hexCode;
+  if (encodeMode === "url") {
+    const base = window.location.origin || "http://localhost:5000";
+    textToEncode = `${base}/colors.html?color=${hexCode.replace("#", "")}`;
+  } else if (encodeMode === "spec") {
+    textToEncode = `ColorVerse\nHex: ${hexCode}\nRGB: ${rgbInfo.string}\nName: ${activeLabel || "Custom"}`;
+  }
+
+  // Foreground fill color
+  const fillColor = colorChoice === "black" ? "#000000" : hexCode;
+
+  if (qrCaption) {
+    qrCaption.textContent = `${hexCode} • ${encodeMode.toUpperCase()}`;
+  }
+
+  // 1. Try Python Flask API: /api/qr
+  const apiUrl = `/api/qr?color=${encodeURIComponent(hexCode)}&text=${encodeURIComponent(textToEncode)}&fill_color=${encodeURIComponent(fillColor)}&back_color=%23FFFFFF&box_size=8`;
+
+  fetch(apiUrl)
+    .then((res) => {
+      if (!res.ok) throw new Error("Python API not responding");
+      return res.json();
+    })
+    .then((data) => {
+      if (data && data.data_url) {
+        qrImg.src = data.data_url;
+        isPythonConnected = true;
+        if (pythonStatusText) pythonStatusText.textContent = "Python Backend (qrcode + PIL)";
+        if (pythonStatusBadge) pythonStatusBadge.style.borderColor = "#10b981";
+      }
+    })
+    .catch(() => {
+      // 2. Client fallback if Python API is not running on this port
+      const cleanColor = fillColor.replace("#", "");
+      const fallbackUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(textToEncode)}&color=${cleanColor}&bgcolor=ffffff`;
+      qrImg.src = fallbackUrl;
+      if (pythonStatusText) pythonStatusText.textContent = "Python Ready (Run py app.py)";
+    });
+}
+
+/**
+ * Download QR Code as a PNG image
+ */
+function downloadQRCode() {
+  if (!qrImg || !qrImg.src) return;
+
+  const link = document.createElement("a");
+  link.download = `colorverse_${activeHex.replace("#", "")}_qr.png`;
+
+  // If data URI, download directly
+  if (qrImg.src.startsWith("data:")) {
+    link.href = qrImg.src;
+    link.click();
+    showToast(`Downloaded QR Code for ${activeHex}`);
+  } else {
+    // If remote or canvas, fetch as blob
+    fetch(qrImg.src)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const blobUrl = URL.createObjectURL(blob);
+        link.href = blobUrl;
+        link.click();
+        URL.revokeObjectURL(blobUrl);
+        showToast(`Downloaded QR Code for ${activeHex}`);
+      })
+      .catch(() => {
+        window.open(qrImg.src, "_blank");
+      });
+  }
+}
+
+/**
+ * Copy full color summary & QR info
+ */
+function copyQRColorSummary() {
+  const rgbInfo = hexToRGB(activeHex);
+  const summary = `ColorVerse Color Information\n` +
+    `--------------------------\n` +
+    `HEX  : ${activeHex}\n` +
+    `RGB  : ${rgbInfo.string}\n` +
+    `Tone : ${getContrastColor(activeHex) === "#ffffff" ? "Dark Theme Tone" : "Light Theme Tone"}\n` +
+    `Label: ${activeLabel || "Random Hex"}\n` +
+    `Web  : ${window.location.origin}/colors.html?color=${activeHex.replace("#", "")}`;
+
+  navigator.clipboard.writeText(summary).then(() => {
+    showToast(`Copied full color specification for ${activeHex}`);
+  });
 }
 
 /**
@@ -230,7 +369,6 @@ function copyHexToClipboard() {
       showToast(`Copied ${code} to clipboard!`);
     });
   } else {
-    // Fallback
     const input = document.createElement("input");
     input.value = code;
     document.body.appendChild(input);
@@ -273,8 +411,35 @@ function toggleAutoFlip() {
   }
 }
 
+/**
+ * Check Python Backend connection on startup
+ */
+function checkPythonBackend() {
+  fetch("/api/info")
+    .then((r) => r.json())
+    .then((data) => {
+      if (data && data.status === "online") {
+        isPythonConnected = true;
+        if (pythonStatusText) {
+          pythonStatusText.textContent = `Python ${data.python_version} API Connected`;
+        }
+        if (pythonStatusBadge) {
+          pythonStatusBadge.style.borderColor = "#10b981";
+        }
+      }
+    })
+    .catch(() => {
+      if (pythonStatusText) {
+        pythonStatusText.textContent = "Run: py app.py (Python API)";
+      }
+    });
+}
+
 // Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
+  // Check Python API status
+  checkPythonBackend();
+
   // Mode tabs
   modeTabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -307,13 +472,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (targetBodyCheckbox) {
     targetBodyCheckbox.addEventListener("change", (e) => {
       targetFullBody = e.target.checked;
-      if (!targetFullBody) {
-        document.body.style.backgroundColor = "";
-      } else {
-        const currentHex = colorDisplay.textContent.trim();
-        if (currentHex) document.body.style.backgroundColor = currentHex;
-      }
+      updatePageBackground(activeHex);
+      showToast(targetFullBody ? "Whole page background enabled" : "Restored card-only mode");
     });
+  }
+
+  // QR Settings change handlers
+  if (qrEncodeSelect) {
+    qrEncodeSelect.addEventListener("change", updateQRCode);
+  }
+  if (qrColorToggle) {
+    qrColorToggle.addEventListener("change", updateQRCode);
+  }
+  if (downloadQrBtn) {
+    downloadQrBtn.addEventListener("click", downloadQRCode);
+  }
+  if (copyQrInfoBtn) {
+    copyQrInfoBtn.addEventListener("click", copyQRColorSummary);
   }
 
   // Clear history
@@ -327,7 +502,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Spacebar shortcut to flip
   document.addEventListener("keydown", (e) => {
-    if (e.code === "Space" && e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA") {
+    if (e.code === "Space" && e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA" && e.target.tagName !== "SELECT") {
       e.preventDefault();
       flipColor();
     }

@@ -82,6 +82,57 @@
             <span>Apply to whole page background</span>
           </div>
 
+          <!-- Color QR Code Generator (Python Powered) -->
+          <div class="flipper-qr-panel">
+            <div class="qr-display-box">
+              <img id="qr-img" class="qr-code-img" src="" alt="Color QR Code" />
+              <div id="qr-caption" class="qr-box-caption">#3B82F6</div>
+            </div>
+
+            <div class="qr-meta-content">
+              <div class="qr-title-row">
+                <h3><span>📱</span> Color QR Code Generator</h3>
+                <div id="python-status-badge" class="python-status-badge" title="Connecting to Python Flask API">
+                  <span class="python-status-dot"></span>
+                  <span id="python-status-text">Python API Ready</span>
+                </div>
+              </div>
+
+              <p class="qr-description">
+                Scan this QR code with your phone camera to share, inspect, or transfer
+                the currently active color code directly to mobile design workflows.
+              </p>
+
+              <div class="qr-settings-grid">
+                <div class="qr-setting-item">
+                  <label for="qr-encode-select">Data to Encode</label>
+                  <select id="qr-encode-select" class="qr-select">
+                    <option value="hex" selected>Hex Code Only (#3B82F6)</option>
+                    <option value="url">ColorVerse Web URL</option>
+                    <option value="spec">Full Spec (Hex, RGB, Mood)</option>
+                  </select>
+                </div>
+
+                <div class="qr-setting-item">
+                  <label for="qr-color-toggle">QR Foreground Color</label>
+                  <select id="qr-color-toggle" class="qr-select">
+                    <option value="colored" selected>Colorized (Matches Flipped Color)</option>
+                    <option value="black">Classic High-Contrast Black</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="qr-actions-row">
+                <button id="download-qr-btn" class="btn-qr-download">
+                  <span>⬇️</span> Download QR Code (.PNG)
+                </button>
+                <button id="copy-qr-info-btn" class="btn-qr-secondary">
+                  <span>📋</span> Copy Color Summary
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- Color History Strip -->
           <div class="flipper-history-panel">
             <div class="history-header">
@@ -93,19 +144,18 @@
             </div>
           </div>
 
-          <!-- Educational Explainer: Hex generation, Math.random(), DOM styling -->
+          <!-- Educational Explainer: Hex generation, Math.random(), DOM styling & Python Backend -->
           <div class="code-explainer-card">
-            <h3><span>💡</span> How It Works Under The Hood</h3>
+            <h3><span>💡</span> How It Works: JavaScript Frontend + Python Backend</h3>
             <p>
-              This color flipper demonstrates three core JavaScript concepts:
-              random hexadecimal generation, algorithmic iteration with
-              <code>Math.random()</code>, and dynamic DOM manipulation.
+              This project pairs client-side dynamic DOM styling with a Python Flask &amp; <code>qrcode</code> backend:
             </p>
 
-            <pre class="code-block-preview"><code><span class="code-comment">// 1. Hex character collection</span>
+            <pre class="code-block-preview"><code><span class="code-comment">/* ========================================================
+   1. FRONTEND: Hex Generation & DOM Styling (JavaScript)
+   ======================================================== */</span>
 <span class="code-keyword">const</span> hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, <span class="code-str">"A"</span>, <span class="code-str">"B"</span>, <span class="code-str">"C"</span>, <span class="code-str">"D"</span>, <span class="code-str">"E"</span>, <span class="code-str">"F"</span>];
 
-<span class="code-comment">// 2. Generating a random Hex code using Math.random()</span>
 <span class="code-keyword">function</span> <span class="code-fn">getRandomHex</span>() {
   <span class="code-keyword">let</span> hexColor = <span class="code-str">"#"</span>;
   <span class="code-keyword">for</span> (<span class="code-keyword">let</span> i = 0; i &lt; 6; i++) {
@@ -115,10 +165,26 @@
   <span class="code-keyword">return</span> hexColor;
 }
 
-<span class="code-comment">// 3. DOM Styling: Updating elements dynamically</span>
+<span class="code-comment">// DOM Styling: Updates elements dynamically</span>
 <span class="code-keyword">const</span> color = <span class="code-fn">getRandomHex</span>();
 document.<span class="code-fn">getElementById</span>(<span class="code-str">"flipper-stage"</span>).style.backgroundColor = color;
-document.<span class="code-fn">getElementById</span>(<span class="code-str">"color-code-display"</span>).textContent = color;</code></pre>
+document.<span class="code-fn">getElementById</span>(<span class="code-str">"color-code-display"</span>).textContent = color;
+
+<span class="code-comment">/* ========================================================
+   2. BACKEND: Python Flask & qrcode Generation (app.py)
+   ======================================================== */</span>
+<span class="code-keyword">import</span> qrcode
+<span class="code-keyword">from</span> flask <span class="code-keyword">import</span> Flask, request, jsonify
+
+@app.route(<span class="code-str">"/api/qr"</span>, methods=[<span class="code-str">"GET"</span>])
+<span class="code-keyword">def</span> <span class="code-fn">generate_color_qr</span>():
+    color = request.args.get(<span class="code-str">"color"</span>, <span class="code-str">"#3B82F6"</span>)
+    qr = qrcode.QRCode(box_size=8, border=2)
+    qr.add_data(color)
+    qr.make(fit=<span class="code-keyword">True</span>)
+    img = qr.make_image(fill_color=color, back_color=<span class="code-str">"white"</span>)
+    <span class="code-comment"># Encodes image to base64 Data URL or returns PNG file</span>
+    <span class="code-keyword">return</span> jsonify({<span class="code-str">"data_url"</span>: data_url, <span class="code-str">"color"</span>: color})</code></pre>
           </div>
         </div>
       </section>
@@ -146,7 +212,7 @@ document.<span class="code-fn">getElementById</span>(<span class="code-str">"col
           <a href="about.html">About</a>
         </div>
         <div class="footer-tech">
-          <p>Built with HTML • CSS • JavaScript • JSON</p>
+          <p>Built with Python • Flask • qrcode • HTML • CSS • JavaScript</p>
         </div>
       </div>
       <div class="footer-bottom">

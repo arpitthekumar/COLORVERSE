@@ -1,0 +1,23 @@
+# Python Virtual Environment (DO NOT COMMIT)
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Local runtime logs & temporary files
+*.log
+scratch/
+test_*.png
+qr_*.png
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
